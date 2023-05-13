@@ -11,6 +11,7 @@
 		8937B8B82A0FD70A0049C1A5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8937B8B72A0FD70A0049C1A5 /* ContentView.swift */; };
 		8937B8BA2A0FD70B0049C1A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8937B8B92A0FD70B0049C1A5 /* Assets.xcassets */; };
 		8937B8BD2A0FD70B0049C1A5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8937B8BC2A0FD70B0049C1A5 /* Preview Assets.xcassets */; };
+		8937B8C52A0FEE4C0049C1A5 /* WelcomeModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8937B8C42A0FEE4C0049C1A5 /* WelcomeModalView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		8937B8B92A0FD70B0049C1A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8937B8BC2A0FD70B0049C1A5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8937B8BE2A0FD70B0049C1A5 /* SwiftyHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftyHelper.entitlements; sourceTree = "<group>"; };
+		8937B8C42A0FEE4C0049C1A5 /* WelcomeModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeModalView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 			children = (
 				8937B8B52A0FD70A0049C1A5 /* SwiftyHelperApp.swift */,
 				8937B8B72A0FD70A0049C1A5 /* ContentView.swift */,
+				8937B8C42A0FEE4C0049C1A5 /* WelcomeModalView.swift */,
 				8937B8B92A0FD70B0049C1A5 /* Assets.xcassets */,
 				8937B8BE2A0FD70B0049C1A5 /* SwiftyHelper.entitlements */,
 				8937B8BB2A0FD70B0049C1A5 /* Preview Content */,
@@ -141,6 +144,7 @@
 			files = (
 				8937B8B82A0FD70A0049C1A5 /* ContentView.swift in Sources */,
 				8937B8B62A0FD70A0049C1A5 /* SwiftyHelperApp.swift in Sources */,
+				8937B8C52A0FEE4C0049C1A5 /* WelcomeModalView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
