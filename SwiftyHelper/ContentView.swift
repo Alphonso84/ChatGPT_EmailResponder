@@ -5,10 +5,11 @@
 //  Created by Alphonso Sensley II on 5/13/23.
 //
 
-import AVFoundation
+import Cocoa
 import SwiftUI
 
 struct ContentView: View {
+    private let speechSynthesizer = NSSpeechSynthesizer()
     let APIKey = ""
     @State private var code = ""
     @State private var analysis = ""
@@ -23,9 +24,11 @@ struct ContentView: View {
                     .padding()
                 
                 TextEditor(text: $code)
+                    .font(.custom("Menlo", size: 20))
                     .border(Color.black, width: 1)
-                    .padding()
-                
+                    .padding(.leading)
+                    .padding(.trailing)
+                    
                 Button(action: {
                     analyzeCode(code)
                 }) {
@@ -35,7 +38,7 @@ struct ContentView: View {
             }
             
             VStack {
-                Text("Swifty Tips:")
+                Text("Swifty GPT:")
                     .padding()
                 if isLoading {
                     ProgressView() // Shows a loading spinner
@@ -43,8 +46,13 @@ struct ContentView: View {
                 } else {
                     TextEditor(text: $analysis)
                         .disabled(true)
+                        .font(.custom("Menlo", size: 20))
                         .border(Color.black, width: 1)
-                        .padding()
+                        .padding(.leading)
+                        .padding(.trailing)
+                        
+                        
+                        
                     
                     Button(action: copyToClipboard) {
                         Text("Copy Analysis to Clipboard")
@@ -64,7 +72,7 @@ struct ContentView: View {
     
     func analyzeCode(_ code: String) {
         self.isLoading = true
-        let customPrompt = "Can you analyze the following Swift code and give me a short example of how it can be improved according to proper Swift standards? \(code)."
+        let customPrompt = "Can you analyze the following Swift code and give me 3 or 4 short tips on how I could improve it? No direct code, just tips in plain english. Preface your response with: 'Thanks for sharing your code with me! Here are a few Swift tips to help you.' End with: 'Thanks for using Swifty tips! Hope this helps you on your Swift Journey!' \(code)."
         
         guard let url = URL(string: "https://api.openai.com/v1/chat/completions") else {
             return
@@ -76,7 +84,7 @@ struct ContentView: View {
         request.addValue("Bearer \(APIKey)", forHTTPHeaderField: "Authorization")
         
         let body: [String: Any] = [
-            "model": "gpt-3.5-turbo",
+            "model": "gpt-4",
             "messages": [
                 ["role": "user", "content": customPrompt]
             ]
@@ -125,10 +133,7 @@ struct ContentView: View {
     }
     
     func speakText(_ text: String) {
-        let utterance = AVSpeechUtterance(string: text)
-        utterance.voice = AVSpeechSynthesisVoice(language: "en-US")
-        let synthesizer = AVSpeechSynthesizer()
-        synthesizer.speak(utterance)
+        speechSynthesizer.startSpeaking(text)
     }
 }
 
