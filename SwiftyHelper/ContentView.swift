@@ -7,6 +7,8 @@
 
 import Cocoa
 import SwiftUI
+import Highlightr
+
 
 struct ContentView: View {
     private let speechSynthesizer = NSSpeechSynthesizer()
@@ -23,7 +25,7 @@ struct ContentView: View {
                 Text("Paste your Swift code below:")
                     .padding()
                 
-                TextEditor(text: $code)
+                HighlightingTextView(text: $code)
                     .font(.custom("Menlo", size: 20))
                     .border(Color.black, width: 1)
                     .padding(.leading)
@@ -50,25 +52,19 @@ struct ContentView: View {
                         .border(Color.black, width: 1)
                         .padding(.leading)
                         .padding(.trailing)
-                        
-                        
-                        
-                    
                     Button(action: copyToClipboard) {
                         Text("Copy Analysis to Clipboard")
                     }
                     .padding()
                 }
             }
-            
         }
-        .background(Color.secondary.opacity(0))
+        
         .onAppear(perform: checkFirstLaunch)
         .sheet(isPresented: $showingModal) {
             ModalView(showingModal: showingModal)
         }
     }
-    
     
     func analyzeCode(_ code: String) {
         self.isLoading = true
@@ -116,7 +112,6 @@ struct ContentView: View {
         }
         task.resume()
     }
-    
     
     func copyToClipboard() {
         let pasteboard = NSPasteboard.general
