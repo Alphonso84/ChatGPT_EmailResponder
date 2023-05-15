@@ -12,7 +12,7 @@ struct ModalView: View {
 
     var body: some View {
         VStack {
-            Text("Welcome to Swifty Helper! Swifty Helper helps make your Swift code adhere to common Swift standards. \n We hope you like it!")
+            Text("Welcome to EmailGPT! EmailGPT composes email responses so you don't have to. \n We hope you like it!")
                 .padding()
             Button(action: {
                 showingModal = false

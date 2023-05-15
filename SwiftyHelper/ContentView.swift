@@ -9,38 +9,97 @@ import Cocoa
 import SwiftUI
 import Highlightr
 
+enum ResponseLength:String, CaseIterable {
+    case VeryShort = "very short"
+    case Short = "short"
+    case Medium = "medium"
+    case Similar = "similar"
+    case Long = "long"
+}
+
+enum ResponseTone:String, CaseIterable {
+    case Direct = "direct"
+    case Friendly = "friendly"
+    case Serious = "serious"
+    case Excited = "excited"
+    case Sad = "sad"
+    case Cheerful = "cheerful"
+    case Rude = "rude"
+    case Humorous = "humorous"
+}
+
+enum ResponseStyle: String, CaseIterable  {
+    case Professional = "professional"
+    case Formal = "formal"
+    case Relaxed = "relaxed"
+    case InFormal = "informal"
+    case Familiar = "familiar"
+    case OldEnglish = "old english"
+    case Childish = "childish"
+    case YoungCali = "young californian"
+    case SouthernBell = "southern bell"
+}
 
 struct ContentView: View {
     private let speechSynthesizer = NSSpeechSynthesizer()
     let APIKey = ""
-    @State private var code = ""
+    @State private var writing = ""
     @State private var analysis = ""
     @State private var showingModal = false
     @State private var isLoading = false
+    @State private var selectedResponseStyle: ResponseStyle = .Professional
+    @State private var selectedResponseLength: ResponseLength = .Short
+    @State private var selectedResponseTone: ResponseTone = .Friendly
     
     
     var body: some View {
+        HStack {
+            Picker("Response Tone", selection: $selectedResponseTone) {
+                ForEach(ResponseTone.allCases, id: \.self) { type in
+                    Text(type.rawValue.capitalized).tag(type)
+                }
+            }
+            .frame(width: 200)  // Adjust the width as needed
+            .pickerStyle(MenuPickerStyle())  // Use menu style for macOS app
+            .padding(.top)
+            Picker("Response Style", selection: $selectedResponseStyle) {
+                ForEach(ResponseStyle.allCases, id: \.self) { type in
+                    Text(type.rawValue.capitalized).tag(type)
+                }
+            }
+            .frame(width: 200)  // Adjust the width as needed
+            .pickerStyle(MenuPickerStyle())  // Use menu style for macOS app
+            .padding(.top)
+            Picker("Response Length", selection: $selectedResponseLength) {
+                ForEach(ResponseLength.allCases, id: \.self) { type in
+                    Text(type.rawValue.capitalized).tag(type)
+                }
+            }
+            .frame(width: 200)  // Adjust the width as needed
+            .pickerStyle(MenuPickerStyle())  // Use menu style for macOS app
+            .padding(.top)
+        }
         HSplitView {
             VStack {
-                Text("Paste your Swift code below:")
+                Text("Paste your email below:")
                     .padding()
                 
-                HighlightingTextView(text: $code)
+                TextEditor(text: $writing)
                     .font(.custom("Menlo", size: 20))
                     .border(Color.black, width: 1)
                     .padding(.leading)
                     .padding(.trailing)
                     
                 Button(action: {
-                    analyzeCode(code)
+                    analyzeWriting(writing)
                 }) {
-                    Text("Analyze Code")
+                    Text("Compose a Response")
                 }
                 .padding()
             }
             
             VStack {
-                Text("Swifty GPT:")
+                Text("\(selectedResponseTone.rawValue), \(selectedResponseStyle.rawValue), \(selectedResponseLength.rawValue) email response:")
                     .padding()
                 if isLoading {
                     ProgressView() // Shows a loading spinner
@@ -66,10 +125,10 @@ struct ContentView: View {
         }
     }
     
-    func analyzeCode(_ code: String) {
+    func analyzeWriting(_ writing: String) {
         self.isLoading = true
-        let customPrompt = "Can you analyze the following Swift code and give me 3 or 4 short tips on how I could improve it? No direct code, just tips in plain english. Preface your response with: 'Thanks for sharing your code with me! Here are a few Swift tips to help you.' End with: 'Thanks for using Swifty tips! Hope this helps you on your Swift Journey!' \(code)."
-        
+        let customPrompt = "Can you respond to the following email? Respond in a \(selectedResponseStyle.rawValue) style, \(selectedResponseLength.rawValue) length, but \(selectedResponseTone.rawValue) tone. Here is the email: \(writing)"
+        print(customPrompt)
         guard let url = URL(string: "https://api.openai.com/v1/chat/completions") else {
             return
         }
