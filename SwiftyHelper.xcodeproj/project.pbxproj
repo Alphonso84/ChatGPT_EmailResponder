@@ -12,8 +12,6 @@
 		8937B8BA2A0FD70B0049C1A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8937B8B92A0FD70B0049C1A5 /* Assets.xcassets */; };
 		8937B8BD2A0FD70B0049C1A5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8937B8BC2A0FD70B0049C1A5 /* Preview Assets.xcassets */; };
 		8937B8C52A0FEE4C0049C1A5 /* WelcomeModalView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8937B8C42A0FEE4C0049C1A5 /* WelcomeModalView.swift */; };
-		8937B8C82A1131B20049C1A5 /* Highlightr in Frameworks */ = {isa = PBXBuildFile; productRef = 8937B8C72A1131B20049C1A5 /* Highlightr */; };
-		8937B8CA2A113AE40049C1A5 /* HighlightingTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8937B8C92A113AE40049C1A5 /* HighlightingTextView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,7 +22,6 @@
 		8937B8BC2A0FD70B0049C1A5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8937B8BE2A0FD70B0049C1A5 /* SwiftyHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SwiftyHelper.entitlements; sourceTree = "<group>"; };
 		8937B8C42A0FEE4C0049C1A5 /* WelcomeModalView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeModalView.swift; sourceTree = "<group>"; };
-		8937B8C92A113AE40049C1A5 /* HighlightingTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightingTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,7 +29,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8937B8C82A1131B20049C1A5 /* Highlightr in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,7 +56,6 @@
 			children = (
 				8937B8B52A0FD70A0049C1A5 /* SwiftyHelperApp.swift */,
 				8937B8B72A0FD70A0049C1A5 /* ContentView.swift */,
-				8937B8C92A113AE40049C1A5 /* HighlightingTextView.swift */,
 				8937B8C42A0FEE4C0049C1A5 /* WelcomeModalView.swift */,
 				8937B8B92A0FD70B0049C1A5 /* Assets.xcassets */,
 				8937B8BE2A0FD70B0049C1A5 /* SwiftyHelper.entitlements */,
@@ -94,7 +89,6 @@
 			);
 			name = SwiftyHelper;
 			packageProductDependencies = (
-				8937B8C72A1131B20049C1A5 /* Highlightr */,
 			);
 			productName = SwiftyHelper;
 			productReference = 8937B8B22A0FD70A0049C1A5 /* Email Responder.app */;
@@ -125,7 +119,6 @@
 			);
 			mainGroup = 8937B8A92A0FD70A0049C1A5;
 			packageReferences = (
-				8937B8C62A1131B20049C1A5 /* XCRemoteSwiftPackageReference "Highlightr" */,
 			);
 			productRefGroup = 8937B8B32A0FD70A0049C1A5 /* Products */;
 			projectDirPath = "";
@@ -156,7 +149,6 @@
 				8937B8B82A0FD70A0049C1A5 /* ContentView.swift in Sources */,
 				8937B8B62A0FD70A0049C1A5 /* SwiftyHelperApp.swift in Sources */,
 				8937B8C52A0FEE4C0049C1A5 /* WelcomeModalView.swift in Sources */,
-				8937B8CA2A113AE40049C1A5 /* HighlightingTextView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,25 +344,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		8937B8C62A1131B20049C1A5 /* XCRemoteSwiftPackageReference "Highlightr" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/raspu/Highlightr";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		8937B8C72A1131B20049C1A5 /* Highlightr */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8937B8C62A1131B20049C1A5 /* XCRemoteSwiftPackageReference "Highlightr" */;
-			productName = Highlightr;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8937B8AA2A0FD70A0049C1A5 /* Project object */;
 }

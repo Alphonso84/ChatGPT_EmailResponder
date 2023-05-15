@@ -7,7 +7,6 @@
 
 import Cocoa
 import SwiftUI
-import Highlightr
 
 enum ResponseLength:String, CaseIterable {
     case VeryShort = "very short"
