@@ -37,7 +37,8 @@ enum ResponseStyle: String, CaseIterable  {
     case OldEnglish = "old english"
     case Childish = "childish"
     case YoungCali = "young californian"
-    case SouthernBell = "southern bell"
+    case SouthernBelle = "southern belle"
+    case Ebonics = "ebonics"
 }
 
 struct ContentView: View {
