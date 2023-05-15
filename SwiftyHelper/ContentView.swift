@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  SwiftyHelper
+//  EmailResponder
 //
 //  Created by Alphonso Sensley II on 5/13/23.
 //
