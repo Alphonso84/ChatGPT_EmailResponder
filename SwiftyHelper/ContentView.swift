@@ -8,6 +8,8 @@
 import Cocoa
 import SwiftUI
 
+
+//TODO: Now that proof of concept is complete. Start code cleanup, create proper model. Better seperate responsibility by utilizing MVVM to help reduce amount of code in this class.
 enum ResponseLength:String, CaseIterable {
     case VeryShort = "very short"
     case Short = "short"
