@@ -46,6 +46,7 @@ struct ContentView: View {
     @State private var writing = ""
     @State private var analysis = ""
     @State private var showingModal = false
+    @State private var showCheckmark = false
     @State private var isLoading = false
     @State private var selectedResponseStyle: ResponseStyle = .Professional
     @State private var selectedResponseLength: ResponseLength = .Short
@@ -105,23 +106,40 @@ struct ContentView: View {
                     ProgressView() // Shows a loading spinner
                         .frame(maxWidth: .infinity, maxHeight: .infinity) // Center the spinner
                 } else {
-                    TextEditor(text: $analysis)
-                        .disabled(true)
-                        .font(.custom("Menlo", size: 20))
-                        .border(Color.black, width: 1)
-                        .padding(.leading)
-                        .padding(.trailing)
+                    ZStack{
+                        TextEditor(text: $analysis)
+                            .disabled(true)
+                            .font(.custom("Menlo", size: 20))
+                            .border(Color.black, width: 1)
+                            .padding(.leading)
+                            .padding(.trailing)
+                        if showCheckmark {
+                            Image(systemName: "checkmark.circle.fill")
+                                .resizable()
+                                .frame(width: 100, height: 100)
+                                .foregroundColor(Color.green)
+                                .opacity(showCheckmark ? 1 : 0)
+                                .animation(.easeInOut(duration: 2))
+                                .onAppear {
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                        withAnimation {
+                                            self.showCheckmark = false
+                                        }
+                                    }
+                                }
+                        }
+                    }
                     Button(action: copyToClipboard) {
-                        Text("Copy Analysis to Clipboard")
+                        Text("Copy Email Response to Clipboard")
                     }
                     .padding()
                 }
             }
-        }
-        
-        .onAppear(perform: checkFirstLaunch)
-        .sheet(isPresented: $showingModal) {
-            ModalView(showingModal: showingModal)
+            
+            .onAppear(perform: checkFirstLaunch)
+            .sheet(isPresented: $showingModal) {
+                ModalView(showingModal: showingModal)
+            }
         }
     }
     
@@ -176,6 +194,9 @@ struct ContentView: View {
         let pasteboard = NSPasteboard.general
         pasteboard.clearContents()
         pasteboard.setString(analysis, forType: .string)
+        withAnimation {
+            self.showCheckmark = true
+        }
     }
     
     func checkFirstLaunch() {
