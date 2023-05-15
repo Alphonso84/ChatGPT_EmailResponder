@@ -90,7 +90,7 @@ struct ContentView: View {
                     .border(Color.black, width: 1)
                     .padding(.leading)
                     .padding(.trailing)
-                    
+                
                 Button(action: {
                     analyzeWriting(writing)
                 }) {

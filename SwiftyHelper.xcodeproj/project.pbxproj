@@ -17,7 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8937B8B22A0FD70A0049C1A5 /* SwiftyHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftyHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8937B8B22A0FD70A0049C1A5 /* Email Responder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Email Responder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8937B8B52A0FD70A0049C1A5 /* SwiftyHelperApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftyHelperApp.swift; sourceTree = "<group>"; };
 		8937B8B72A0FD70A0049C1A5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		8937B8B92A0FD70B0049C1A5 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -50,7 +50,7 @@
 		8937B8B32A0FD70A0049C1A5 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8937B8B22A0FD70A0049C1A5 /* SwiftyHelper.app */,
+				8937B8B22A0FD70A0049C1A5 /* Email Responder.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -97,7 +97,7 @@
 				8937B8C72A1131B20049C1A5 /* Highlightr */,
 			);
 			productName = SwiftyHelper;
-			productReference = 8937B8B22A0FD70A0049C1A5 /* SwiftyHelper.app */;
+			productReference = 8937B8B22A0FD70A0049C1A5 /* Email Responder.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -297,7 +297,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = AlphonsoSensley.SwiftyHelper;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Email Responder";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
@@ -324,7 +324,7 @@
 				);
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = AlphonsoSensley.SwiftyHelper;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Email Responder";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 			};
