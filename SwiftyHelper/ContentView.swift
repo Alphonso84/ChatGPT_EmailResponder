@@ -109,7 +109,8 @@ struct ContentView: View {
                         .frame(maxWidth: .infinity, maxHeight: .infinity) // Center the spinner
                 } else {
                     ZStack{
-                        TextEditor(text: $analysis)
+                        TypingView(fullText:analysis)
+                            .frame(maxWidth:.infinity,maxHeight: .infinity)
                             .disabled(true)
                             .font(.custom("Menlo", size: 20))
                             .border(Color.black, width: 1)
@@ -213,8 +214,6 @@ struct ContentView: View {
         speechSynthesizer.startSpeaking(text)
     }
 }
-
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
