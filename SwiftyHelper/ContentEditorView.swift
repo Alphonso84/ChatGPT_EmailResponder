@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  ContentEditorView.swift
 //  EmailResponder
 //
 //  Created by Alphonso Sensley II on 5/13/23.
@@ -10,54 +10,14 @@ import SwiftUI
 
 
 //TODO: Now that proof of concept is complete. Start code cleanup, create proper model. Better seperate responsibility by utilizing MVVM to help reduce amount of code in this class.
-enum ResponseLength:String, CaseIterable {
-    case VeryShort = "very short"
-    case Short = "short"
-    case Medium = "medium"
-    case Similar = "similar"
-    case Long = "long"
-}
 
-enum ResponseTone:String, CaseIterable {
-    case Direct = "direct"
-    case Friendly = "friendly"
-    case Serious = "serious"
-    case Excited = "excited"
-    case Sad = "sad"
-    case Cheerful = "cheerful"
-    case Rude = "rude"
-    case Humorous = "humorous"
-}
+struct ContentEditorView: View {
+    @ObservedObject var viewModel = ContentEditorView_ViewModel()
 
-enum ResponseStyle: String, CaseIterable  {
-    case Professional = "professional"
-    case Formal = "formal"
-    case Relaxed = "relaxed"
-    case InFormal = "informal"
-    case Familiar = "familiar"
-    case OldEnglish = "old english"
-    case Childish = "childish"
-    case YoungCali = "young californian"
-    case SouthernBelle = "southern belle"
-    case Ebonics = "ebonics"
-}
-
-struct ContentView: View {
-    private let speechSynthesizer = NSSpeechSynthesizer()
-    let APIKey = ""
-    @State private var writing = ""
-    @State private var analysis = ""
-    @State private var showingModal = false
-    @State private var showCheckmark = false
-    @State private var isLoading = false
-    @State private var selectedResponseStyle: ResponseStyle = .Professional
-    @State private var selectedResponseLength: ResponseLength = .Short
-    @State private var selectedResponseTone: ResponseTone = .Friendly
-    
     
     var body: some View {
         HStack {
-            Picker("Response Tone", selection: $selectedResponseTone) {
+            Picker("Response Tone", selection: $viewModel.selectedResponseTone) {
                 ForEach(ResponseTone.allCases, id: \.self) { type in
                     Text(type.rawValue.capitalized).tag(type)
                 }
@@ -65,7 +25,7 @@ struct ContentView: View {
             .frame(width: 200)  // Adjust the width as needed
             .pickerStyle(MenuPickerStyle())  // Use menu style for macOS app
             .padding(.top)
-            Picker("Response Style", selection: $selectedResponseStyle) {
+            Picker("Response Style", selection: $viewModel.selectedResponseStyle) {
                 ForEach(ResponseStyle.allCases, id: \.self) { type in
                     Text(type.rawValue.capitalized).tag(type)
                 }
@@ -73,7 +33,7 @@ struct ContentView: View {
             .frame(width: 200)  // Adjust the width as needed
             .pickerStyle(MenuPickerStyle())  // Use menu style for macOS app
             .padding(.top)
-            Picker("Response Length", selection: $selectedResponseLength) {
+            Picker("Response Length", selection: $viewModel.selectedResponseLength) {
                 ForEach(ResponseLength.allCases, id: \.self) { type in
                     Text(type.rawValue.capitalized).tag(type)
                 }
@@ -87,7 +47,7 @@ struct ContentView: View {
                 Text("Paste your email below:")
                     .padding()
                 
-                CustomTextEditorView(text: $writing)
+                CustomTextEditorView(text: $viewModel.writing)
                     .font(.custom("Menlo", size: 20))
                     .border(Color.black, width: 1)
                     .padding(.leading)
@@ -95,7 +55,7 @@ struct ContentView: View {
                     
                 
                 Button(action: {
-                    analyzeWriting(writing)
+                    analyzeWriting(viewModel.writing)
                 }) {
                     Text("Compose a Response")
                 }
@@ -103,30 +63,30 @@ struct ContentView: View {
             }
             
             VStack {
-                Text("\(selectedResponseTone.rawValue), \(selectedResponseStyle.rawValue), \(selectedResponseLength.rawValue) email response:")
+                Text("\(viewModel.selectedResponseTone.rawValue), \(viewModel.selectedResponseStyle.rawValue), \(viewModel.selectedResponseLength.rawValue) email response:")
                     .padding()
-                if isLoading {
+                if viewModel.isLoading {
                     ProgressView() // Shows a loading spinner
                         .frame(maxWidth: .infinity, maxHeight: .infinity) // Center the spinner
                 } else {
                     ZStack{
-                        TypingView(fullText:analysis)
+                        TypingView(fullText:viewModel.analysis)
                             .frame(maxWidth:.infinity,maxHeight: .infinity)
                             .font(.custom("Menlo", size: 20))
                             .border(Color.black, width: 1)
                             .padding(.leading)
                             .padding(.trailing)
-                        if showCheckmark {
+                        if viewModel.showCheckmark {
                             Image(systemName: "checkmark.circle.fill")
                                 .resizable()
                                 .frame(width: 100, height: 100)
                                 .foregroundColor(Color.green)
-                                .opacity(showCheckmark ? 1 : 0)
+                                .opacity(viewModel.showCheckmark ? 1 : 0)
                                 .animation(.easeInOut(duration: 2))
                                 .onAppear {
                                     DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
                                         withAnimation {
-                                            self.showCheckmark = false
+                                            viewModel.showCheckmark = false
                                         }
                                     }
                                 }
@@ -140,15 +100,15 @@ struct ContentView: View {
             }
             
             .onAppear(perform: checkFirstLaunch)
-            .sheet(isPresented: $showingModal) {
-                ModalView(showingModal: showingModal)
+            .sheet(isPresented: $viewModel.showingModal) {
+                ModalView(showingModal: viewModel.showingModal)
             }
         }
     }
     
     func analyzeWriting(_ writing: String) {
-        self.isLoading = true
-        let customPrompt = "Can you respond to the following email? Respond in a \(selectedResponseStyle.rawValue) style, \(selectedResponseLength.rawValue) length, but \(selectedResponseTone.rawValue) tone. Here is the email: \(writing)"
+        viewModel.isLoading = true
+        let customPrompt = "Can you respond to the following email? Respond in a \(viewModel.selectedResponseStyle.rawValue) style, \(viewModel.selectedResponseLength.rawValue) length, but \(viewModel.selectedResponseTone.rawValue) tone. Here is the email: \(writing)"
         print(customPrompt)
         guard let url = URL(string: "https://api.openai.com/v1/chat/completions") else {
             return
@@ -157,7 +117,7 @@ struct ContentView: View {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("Bearer \(APIKey)", forHTTPHeaderField: "Authorization")
+        request.addValue("Bearer \(viewModel.APIKey)", forHTTPHeaderField: "Authorization")
         
         let body: [String: Any] = [
             "model": "gpt-4",
@@ -180,9 +140,9 @@ struct ContentView: View {
                        let message = firstChoice["message"] as? [String: Any],
                        let content = message["content"] as? String {
                         DispatchQueue.main.async {
-                            self.isLoading = false
-                            self.analysis = content
-                            self.speakText(content)
+                            self.viewModel.isLoading = false
+                            self.viewModel.analysis = content
+                            self.viewModel.speakText(content)
                         }
                     }
                 } catch {
@@ -196,27 +156,27 @@ struct ContentView: View {
     func copyToClipboard() {
         let pasteboard = NSPasteboard.general
         pasteboard.clearContents()
-        pasteboard.setString(analysis, forType: .string)
+        pasteboard.setString(viewModel.analysis, forType: .string)
         withAnimation {
-            self.showCheckmark = true
+            self.viewModel.showCheckmark = true
         }
     }
     
     func checkFirstLaunch() {
         let isFirstLaunch = UserDefaults.standard.bool(forKey: "isFirstLaunch")
         if !isFirstLaunch {
-            showingModal = true
+            viewModel.showingModal = true
             UserDefaults.standard.set(true, forKey: "isFirstLaunch")
         }
     }
     
     func speakText(_ text: String) {
-        speechSynthesizer.startSpeaking(text)
+        viewModel.speechSynthesizer.startSpeaking(text)
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        ContentEditorView()
     }
 }
