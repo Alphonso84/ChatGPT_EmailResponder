@@ -16,6 +16,7 @@
 		89F6F51B2A1C573F005DAA6E /* CustomTextEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F6F51A2A1C573F005DAA6E /* CustomTextEditor.swift */; };
 		89F6F51D2A1CFB75005DAA6E /* PromptModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F6F51C2A1CFB75005DAA6E /* PromptModels.swift */; };
 		89F6F51F2A1D0D98005DAA6E /* ContentEditorView_ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F6F51E2A1D0D98005DAA6E /* ContentEditorView_ViewModel.swift */; };
+		89F6F5212A1D1807005DAA6E /* PickerComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 89F6F5202A1D1807005DAA6E /* PickerComponent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		89F6F51A2A1C573F005DAA6E /* CustomTextEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextEditor.swift; sourceTree = "<group>"; };
 		89F6F51C2A1CFB75005DAA6E /* PromptModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromptModels.swift; sourceTree = "<group>"; };
 		89F6F51E2A1D0D98005DAA6E /* ContentEditorView_ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentEditorView_ViewModel.swift; sourceTree = "<group>"; };
+		89F6F5202A1D1807005DAA6E /* PickerComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +48,7 @@
 		8937B8A92A0FD70A0049C1A5 = {
 			isa = PBXGroup;
 			children = (
+				89F6F5202A1D1807005DAA6E /* PickerComponent.swift */,
 				89F6F51E2A1D0D98005DAA6E /* ContentEditorView_ViewModel.swift */,
 				8937B8B42A0FD70A0049C1A5 /* SwiftyHelper */,
 				8937B8B32A0FD70A0049C1A5 /* Products */,
@@ -159,6 +162,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8937B8B82A0FD70A0049C1A5 /* ContentEditorView.swift in Sources */,
+				89F6F5212A1D1807005DAA6E /* PickerComponent.swift in Sources */,
 				89F6F5192A1AAFFF005DAA6E /* TypingView.swift in Sources */,
 				89F6F51F2A1D0D98005DAA6E /* ContentEditorView_ViewModel.swift in Sources */,
 				8937B8B62A0FD70A0049C1A5 /* SwiftyHelperApp.swift in Sources */,

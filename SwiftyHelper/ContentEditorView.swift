@@ -13,30 +13,9 @@ struct ContentEditorView: View {
     
     var body: some View {
         HStack {
-            Picker("Response Tone", selection: $viewModel.selectedResponseTone) {
-                ForEach(ResponseTone.allCases, id: \.self) { type in
-                    Text(type.rawValue.capitalized).tag(type)
-                }
-            }
-            .frame(width: 200)
-            .pickerStyle(MenuPickerStyle())
-            .padding(.top)
-            Picker("Response Style", selection: $viewModel.selectedResponseStyle) {
-                ForEach(ResponseStyle.allCases, id: \.self) { type in
-                    Text(type.rawValue.capitalized).tag(type)
-                }
-            }
-            .frame(width: 200)
-            .pickerStyle(MenuPickerStyle())
-            .padding(.top)
-            Picker("Response Length", selection: $viewModel.selectedResponseLength) {
-                ForEach(ResponseLength.allCases, id: \.self) { type in
-                    Text(type.rawValue.capitalized).tag(type)
-                }
-            }
-            .frame(width: 200)
-            .pickerStyle(MenuPickerStyle())
-            .padding(.top)
+            PickerComponent(title: "Response Tone", selection: $viewModel.selectedResponseTone)
+            PickerComponent(title: "Response Style", selection: $viewModel.selectedResponseStyle)
+            PickerComponent(title: "Response Length", selection: $viewModel.selectedResponseLength)
         }
         HSplitView {
             VStack {
