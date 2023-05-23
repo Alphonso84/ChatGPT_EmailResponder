@@ -17,7 +17,7 @@ class ContentEditorView_ViewModel: ObservableObject {
     @Published var selectedResponseLength: ResponseLength = .Short
     @Published var selectedResponseTone: ResponseTone = .Friendly
     let speechSynthesizer = NSSpeechSynthesizer()
-    let APIKey = "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"
+    let APIKey = ""
     
     func analyzeWriting() {
         self.isLoading = true
