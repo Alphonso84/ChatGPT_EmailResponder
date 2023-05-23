@@ -1,10 +1,3 @@
-//
-//  TypingView.swift
-//  SwiftyHelper
-//
-//  Created by Alphonso Sensley II on 5/21/23.
-//
-
 import SwiftUI
 
 struct TypingView: View {
@@ -12,16 +5,21 @@ struct TypingView: View {
     var fullText: String
 
     var body: some View {
-        VStack {
-            HStack {
-                Text(textToDisplay)
-                Spacer()
+        ScrollView {
+            VStack {
+                HStack {
+                    Text(textToDisplay)
+                        .lineLimit(nil) // Allows text to wrap onto the next line
+                    Spacer()
+                }
+                .padding(.leading)
+                .padding(.trailing)
+
+                Spacer() // Pushes VStack to the top
             }
-            .padding(.leading)
-            .padding(.leading)
-            .padding(.trailing)
-            .padding(.trailing)
         }
+        .background(Color.black)
+        .foregroundColor(.white) 
         .onAppear {
             self.animateText()
         }
@@ -29,7 +27,7 @@ struct TypingView: View {
 
     func animateText() {
         var charIndex = 0.0
-        _ = Timer.scheduledTimer(withTimeInterval: 0.06, repeats: true) { (timer) in
+        _ = Timer.scheduledTimer(withTimeInterval: 0.05, repeats: true) { (timer) in
             if Int(charIndex) < fullText.count {
                 let index = fullText.index(fullText.startIndex, offsetBy: Int(charIndex))
                 textToDisplay += String(fullText[index])
@@ -40,11 +38,3 @@ struct TypingView: View {
         }
     }
 }
-
-struct TypingView_Previews: PreviewProvider {
-    static var previews: some View {
-        TypingView(fullText: "")
-    }
-}
-
-

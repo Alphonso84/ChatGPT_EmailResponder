@@ -87,11 +87,12 @@ struct ContentView: View {
                 Text("Paste your email below:")
                     .padding()
                 
-                TextEditor(text: $writing)
+                CustomTextEditorView(text: $writing)
                     .font(.custom("Menlo", size: 20))
                     .border(Color.black, width: 1)
                     .padding(.leading)
                     .padding(.trailing)
+                    
                 
                 Button(action: {
                     analyzeWriting(writing)
@@ -111,7 +112,6 @@ struct ContentView: View {
                     ZStack{
                         TypingView(fullText:analysis)
                             .frame(maxWidth:.infinity,maxHeight: .infinity)
-                            .disabled(true)
                             .font(.custom("Menlo", size: 20))
                             .border(Color.black, width: 1)
                             .padding(.leading)
