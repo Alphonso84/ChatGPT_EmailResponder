@@ -73,7 +73,7 @@ struct ContentEditorView: View {
             
             .onAppear(perform: viewModel.checkFirstLaunch)
             .sheet(isPresented: $viewModel.showingModal) {
-                ModalView(showingModal: viewModel.showingModal)
+                ModalView(showingModal: $viewModel.showingModal)
             }
         }
     }

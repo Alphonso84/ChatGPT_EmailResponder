@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct ModalView: View {
-    @State var showingModal: Bool
+    @Binding var showingModal: Bool
 
     var body: some View {
         VStack {
-            Text("Welcome to EmailGPT! EmailGPT composes email responses so you don't have to. \n We hope you like it!")
+            Text("Welcome to EmailResponder! Powered by ChatGPT; EmailResponder composes email responses so you don't have to. \n We hope you like it!")
                 .padding()
             Button(action: {
                 showingModal = false
@@ -25,8 +25,9 @@ struct ModalView: View {
     }
 }
 
+
 struct ModalView_Previews: PreviewProvider {
     static var previews: some View {
-        ModalView(showingModal: true)
+        ModalView(showingModal: .constant(true))
     }
 }

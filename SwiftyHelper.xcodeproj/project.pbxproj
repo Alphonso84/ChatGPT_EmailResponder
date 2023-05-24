@@ -48,8 +48,6 @@
 		8937B8A92A0FD70A0049C1A5 = {
 			isa = PBXGroup;
 			children = (
-				89F6F5202A1D1807005DAA6E /* PickerComponent.swift */,
-				89F6F51E2A1D0D98005DAA6E /* ContentEditorView_ViewModel.swift */,
 				8937B8B42A0FD70A0049C1A5 /* SwiftyHelper */,
 				8937B8B32A0FD70A0049C1A5 /* Products */,
 			);
@@ -67,11 +65,9 @@
 			isa = PBXGroup;
 			children = (
 				8937B8B52A0FD70A0049C1A5 /* SwiftyHelperApp.swift */,
-				89F6F51C2A1CFB75005DAA6E /* PromptModels.swift */,
-				8937B8B72A0FD70A0049C1A5 /* ContentEditorView.swift */,
-				89F6F5182A1AAFFF005DAA6E /* TypingView.swift */,
-				89F6F51A2A1C573F005DAA6E /* CustomTextEditor.swift */,
-				8937B8C42A0FEE4C0049C1A5 /* WelcomeModalView.swift */,
+				89F6F5252A1DB230005DAA6E /* Model */,
+				89F6F5222A1DB00D005DAA6E /* Views */,
+				89F6F5232A1DB03A005DAA6E /* ViewModel */,
 				8937B8B92A0FD70B0049C1A5 /* Assets.xcassets */,
 				8937B8BE2A0FD70B0049C1A5 /* SwiftyHelper.entitlements */,
 				8937B8BB2A0FD70B0049C1A5 /* Preview Content */,
@@ -85,6 +81,42 @@
 				8937B8BC2A0FD70B0049C1A5 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		89F6F5222A1DB00D005DAA6E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				89F6F5242A1DB204005DAA6E /* MainView */,
+				89F6F5202A1D1807005DAA6E /* PickerComponent.swift */,
+				89F6F51A2A1C573F005DAA6E /* CustomTextEditor.swift */,
+				89F6F5182A1AAFFF005DAA6E /* TypingView.swift */,
+				8937B8C42A0FEE4C0049C1A5 /* WelcomeModalView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		89F6F5232A1DB03A005DAA6E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				89F6F51E2A1D0D98005DAA6E /* ContentEditorView_ViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		89F6F5242A1DB204005DAA6E /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				8937B8B72A0FD70A0049C1A5 /* ContentEditorView.swift */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		89F6F5252A1DB230005DAA6E /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				89F6F51C2A1CFB75005DAA6E /* PromptModels.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
