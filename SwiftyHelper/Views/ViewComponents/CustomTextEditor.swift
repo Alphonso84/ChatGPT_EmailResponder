@@ -19,7 +19,6 @@ struct CustomTextEditorView: NSViewRepresentable {
         textView.isEditable = true
         textView.isSelectable = true
         textView.backgroundColor = NSColor.black
-        //textView.placeholder = "Enter Email Here"
         textView.textColor = NSColor.white
         return textView
     }

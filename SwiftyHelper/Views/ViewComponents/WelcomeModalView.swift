@@ -20,8 +20,8 @@ struct ModalView: View {
                 Text("OK")
             }
         }
-        .frame(width: 300, height: 300)  // Set the width and height to the same value
-        .background(Color.primary.opacity(0.5)) // Optional: Add a background color so you can see the square
+        .frame(width: 300, height: 300)
+        .background(Color.primary.opacity(0.5)) 
     }
 }
 
